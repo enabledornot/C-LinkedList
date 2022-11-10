@@ -53,13 +53,29 @@ void* removeFromFront(linkedList* LL) {
         LL->firstItem = LL->firstItem->next;
     }
     void* removedItem = removedElement->itmPtr;
+    LL->numItems-=1;
     free(removedElement);
     return removedItem;
 }
 
 void* removeFromEnd(linkedList* LL) {
-    listElement* removedElement = LL->lastItem;
-    if(LL->firstItem!=NULL) {
-        LL->numItems-=1;
+    if(LL->firstItem==NULL) {
+        return NULL;
     }
+    listElement* removedElement = LL->lastItem;
+    if(LL->firstItem==LL->lastItem) {
+        LL->firstItem = NULL;
+        LL->lastItem = NULL;
+    }
+    else {
+        listElement* prevPtr = LL->firstItem;
+        while(prevPtr->next!=removedElement) {
+            prevPtr = prevPtr->next;
+        }
+        prevPtr->next = NULL;
+    }
+    void* removedItem = removedElement->itmPtr;
+    LL->numItems-=1;
+    free(removedElement);
+    return removedItem;
 }
