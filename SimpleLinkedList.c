@@ -15,7 +15,7 @@ listElement* __getElement(void* elementPtr) {
 }
 
 void insertIntoFront(linkedList* LL, void* newItem) {
-    listElement* newElement = __getElement(newElement);
+    listElement* newElement = __getElement(newItem);
     if(LL->firstItem==NULL) {
         LL->firstItem = newElement;
         LL->lastItem = newElement;
@@ -23,6 +23,19 @@ void insertIntoFront(linkedList* LL, void* newItem) {
     else {
         newElement->next = LL->firstItem;
         LL->firstItem = newElement;
+    }
+    LL->numItems+=1;
+}
+
+void insertAtEnd(linkedList* LL, void* newItem) {
+    listElement* newElement = __getElement(newItem);
+    if(LL->firstItem==NULL) {
+        LL->firstItem = newElement;
+        LL->lastItem = newElement;
+    }
+    else {
+        LL->lastItem->next = newElement;
+        LL->lastItem = newElement;
     }
     LL->numItems+=1;
 }
