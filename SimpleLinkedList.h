@@ -14,5 +14,6 @@ typedef struct linkedList {
 
 linkedList* createList();
 void insertIntoFront(linkedList* LL, void* newItem);
+void insertAtEnd(linkedList* LL, void* newItem);
 
 #endif

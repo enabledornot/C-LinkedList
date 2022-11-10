@@ -39,3 +39,11 @@ void insertAtEnd(linkedList* LL, void* newItem) {
     }
     LL->numItems+=1;
 }
+
+void* removeFromFront(linkedList* LL) {
+    listElement* removedElement = LL->firstItem;
+    if(LL->firstItem!=NULL) {
+        LL->firstItem = LL->firstItem->next;
+    }
+    return removedElement->itmPtr;
+}
