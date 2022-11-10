@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include "SimpleLinkedList.h"
 
 linkedList* createList() {
@@ -14,7 +15,7 @@ listElement* __getElement(void* elementPtr) {
     return newElement;
 }
 
-void insertIntoFront(linkedList* LL, void* newItem) {
+void insertAtFront(linkedList* LL, void* newItem) {
     listElement* newElement = __getElement(newItem);
     if(LL->firstItem==NULL) {
         LL->firstItem = newElement;
@@ -72,6 +73,9 @@ void* removeFromEnd(linkedList* LL) {
         while(prevPtr->next!=removedElement) {
             prevPtr = prevPtr->next;
         }
+        if(removedElement==LL->lastItem) {
+            LL->lastItem = prevPtr;
+        }
         prevPtr->next = NULL;
     }
     void* removedItem = removedElement->itmPtr;
@@ -89,5 +93,6 @@ void printList(linkedList* LL, void *(*printObj)(void *)) {
         printObj(listPtr->itmPtr);
         printf("\n");
         cnt+=1;
+        listPtr = listPtr->next;
     }
 }

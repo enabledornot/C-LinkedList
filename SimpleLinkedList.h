@@ -13,7 +13,10 @@ typedef struct linkedList {
 } linkedList;
 
 linkedList* createList();
-void insertIntoFront(linkedList* LL, void* newItem);
+void insertAtFront(linkedList* LL, void* newItem);
 void insertAtEnd(linkedList* LL, void* newItem);
+void* removeFromFront(linkedList* LL);
+void* removeFromEnd(linkedList* LL);
+void printList(linkedList* LL, void *(*printObj)(void *));
 
 #endif
