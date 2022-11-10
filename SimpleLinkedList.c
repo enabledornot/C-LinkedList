@@ -79,3 +79,15 @@ void* removeFromEnd(linkedList* LL) {
     free(removedElement);
     return removedItem;
 }
+
+void printList(linkedList* LL, void *(*printObj)(void *)) {
+    listElement* listPtr = LL->firstItem;
+    int cnt = 0;
+    printf("PRINTING LIST\n");
+    while(listPtr!=NULL) {
+        printf("%d - ",cnt);
+        printObj(listPtr->itmPtr);
+        printf("\n");
+        cnt+=1;
+    }
+}
